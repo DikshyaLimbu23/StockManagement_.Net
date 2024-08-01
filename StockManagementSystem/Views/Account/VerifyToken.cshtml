@@ -1,0 +1,25 @@
+﻿@model UserEdit
+
+@{
+    ViewData["title"] = "VerifyToken";
+    Layout = "_StaticLayout";
+}
+
+<div calss="max-x-md mx-auto">
+
+    <h1>Please enter your Token Number</h1>
+    <form asp-action="VerifyToken" method="post">
+        <input asp-for="EmailAddress" hidden />
+        <div asp-validation-summary="ModelOnly" class="text-red-400"></div>
+        <div class="relative">
+            <input asp-for="EmailToken" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label asp-for="EmailToken"></label>
+            <span asp-validation-for="EmailToken"></span>
+        </div>
+        <div class="my-2">
+
+            <input class="text-white-bg-blue-700 hover\:bg-blue-800 focus\:outline-none px-5 py-3 " type="submit" value="Submit" />
+        </div>
+
+    </form>
+</div>

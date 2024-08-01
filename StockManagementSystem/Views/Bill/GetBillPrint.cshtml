@@ -1,0 +1,137 @@
+﻿@model CompleteBillView
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Cash Bill</title>
+    <style>
+        /* Your existing styles */
+    </style>
+    <script>
+        window.onload = function () {
+            document.getElementById("printButton").onclick = function () {
+                window.print();
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+
+        .customer-info, .totals, .signatures {
+            margin-bottom: 20px;
+        }
+
+        .customer-info p, .totals p, .signatures p {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .totals {
+            border-top: 1px solid #000;
+            padding-top: 10px;
+        }
+
+        .amounts p {
+            margin: 5px 0;
+        }
+
+        .print-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .print-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .print-button:hover {
+            background-color: #45a049;
+        }
+
+      
+    </style>
+</head>
+<body>
+    <div class="customer-info">
+        <p>Customer Name: _____________________________</p>
+        <p>Customer Address: ___________________________</p>
+        <p>Customer Ph.: _______________________________</p>
+    </div>
+  
+        <table>
+            <thead>
+                <tr>
+                    <th>S.N</th>
+                    <th>Name of Item</th>
+                    <th>Qty</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int index = 0;
+                }
+
+                    <tr>
+                        <td>@(++index)</td>
+                        <td>@Model.PlantName</td>
+                        <td>@Model.Quantity</td>
+                        <td>@Model.Rate</td>
+                        <td>@(Model.Quantity * Model.Rate)</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+ 
+    <div class="totals">
+        <p>In Word: _______________________________________________</p>
+        <div class="amounts">
+            <p>Total:</p>
+            <p>Vat: ____________________</p>
+            <p>G. Total: ____________________</p>
+        </div>
+    </div>
+    <div class="signatures">
+        <p>Receiver Signature</p>
+        <p>Giver Signature</p>
+    </div>
+    <div class="print-button-container">
+        <button id="printButton" class="print-button">Print Bill</button>
+    </div>
+</body>
+</html>
